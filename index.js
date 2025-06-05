@@ -2,6 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const {Teams, TeamValidator, Dex} = require('pokemon-showdown');
+const http = require('http');
+const WebSocket = require('ws');
+const {BattleStream, getPlayerStreams} = require('pokemon-showdown');
 
 const DB_FILE = './data/db.json';
 function loadDB() {
@@ -12,6 +15,7 @@ function saveDB(db) {
 }
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
 
 app.post('/register', (req, res) => {
     const {username, password} = req.body;
@@ -66,4 +70,31 @@ app.post('/teams', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('Server running on port', PORT));
+const server = http.createServer(app);
+
+const wss = new WebSocket.Server({ noServer: true });
+
+wss.on('connection', ws => {
+    const stream = new BattleStream();
+    const streams = getPlayerStreams(stream);
+    (async () => {
+        for await (const chunk of streams.omniscient) {
+            ws.send(chunk);
+        }
+    })();
+    ws.on('message', msg => {
+        stream.write(String(msg));
+    });
+});
+
+server.on('upgrade', (request, socket, head) => {
+    if (request.url === '/battle') {
+        wss.handleUpgrade(request, socket, head, ws => {
+            wss.emit('connection', ws, request);
+        });
+    } else {
+        socket.destroy();
+    }
+});
+
+server.listen(PORT, () => console.log('Server running on port', PORT));
