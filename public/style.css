@@ -1,0 +1,24 @@
+body {
+  background: #040404;
+  color: #F2F1F2;
+  font-family: 'IBM Plex Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: #95A1F9;
+  color: #040404;
+  padding: 10px;
+}
+button {
+  font-family: inherit;
+  background: #95A1F9;
+  color: #040404;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+#formats, #teamBuilder {
+  padding: 10px;
+}
