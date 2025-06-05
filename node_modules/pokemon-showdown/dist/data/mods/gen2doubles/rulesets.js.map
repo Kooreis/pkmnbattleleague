@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../data/mods/gen2doubles/rulesets.ts"],
+  "sourcesContent": ["export const Rulesets: import('../../../sim/dex-formats').ModdedFormatDataTable = {\n\tstandarddoubles: {\n\t\teffectType: 'ValidatorRule',\n\t\tname: 'Standard Doubles',\n\t\truleset: ['Obtainable', 'Sleep Clause Mod', 'Freeze Clause Mod', 'Species Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Endless battle Clause', 'HP Percentage Mod', 'Cancel Mod'],\n\t\tbanlist: [\n\t\t\t'Hypnosis + Mean Look',\n\t\t\t'Hypnosis + Spider Web',\n\t\t\t'Lovely Kiss + Mean Look',\n\t\t\t'Lovely Kiss + Spider Web',\n\t\t\t'Sing + Mean Look',\n\t\t\t'Sing + Spider Web',\n\t\t\t'Sleep Powder + Mean Look',\n\t\t\t'Sleep Powder + Spider Web',\n\t\t\t'Spore + Mean Look',\n\t\t\t'Spore + Spider Web',\n\t\t],\n\t},\n};\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAO,MAAM,WAAqE;AAAA,EACjF,iBAAiB;AAAA,IAChB,YAAY;AAAA,IACZ,MAAM;AAAA,IACN,SAAS,CAAC,cAAc,oBAAoB,qBAAqB,kBAAkB,eAAe,wBAAwB,yBAAyB,qBAAqB,YAAY;AAAA,IACpL,SAAS;AAAA,MACR;AAAA,MACA;AAAA,MACA;AAAA,MACA;AAAA,MACA;AAAA,MACA;AAAA,MACA;AAAA,MACA;AAAA,MACA;AAAA,MACA;AAAA,IACD;AAAA,EACD;AACD;",
+  "names": []
+}
